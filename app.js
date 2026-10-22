@@ -141,8 +141,9 @@
   lb.setAttribute('aria-modal', 'true');
   lb.setAttribute('aria-label', 'Photograph');
   lb.innerHTML = `
-    <button class="lb__close" type="button" aria-label="Close">
+    <button class="lb__close" type="button" aria-label="Close photograph">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      Close
     </button>
     <img alt=""><p class="lb__cap"></p>`;
   document.body.appendChild(lb);
@@ -153,7 +154,8 @@
 
   const openLb = (src, alt, cap) => {
     lastFocus = document.activeElement;
-    lbImg.src = src; lbImg.alt = alt; lbCap.textContent = cap || '';
+    lbImg.src = src; lbImg.alt = alt;
+    lbCap.textContent = cap ? `${cap} — press Esc or click anywhere to close` : 'Press Esc or click anywhere to close';
     lb.classList.add('is-open');
     document.body.style.overflow = 'hidden';
     lb.querySelector('.lb__close').focus();
@@ -172,7 +174,7 @@
     });
   });
 
-  lb.addEventListener('click', e => { if (e.target === lb || e.target.closest('.lb__close')) closeLb(); });
+  lb.addEventListener('click', () => closeLb());
   addEventListener('keydown', e => { if (e.key === 'Escape' && lb.classList.contains('is-open')) closeLb(); });
 
   /* ── One cue on the primary action, once the hero is behind you ───── */
