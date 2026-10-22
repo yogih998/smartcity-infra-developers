@@ -28,7 +28,7 @@
   onScroll();
 
   /* ── Scroll reveal ────────────────────────────────────────────────── */
-  const reveal = document.querySelectorAll('.sec-head, .project, .more, .works li, .plates, .band div, .arc > *, .contact__grid > *');
+  const reveal = document.querySelectorAll('.sec-head, .project, .more, .works li, .plates, .band div, .arc > *, .plan > *, .contact__grid > *');
   reveal.forEach(el => el.classList.add('r'));
 
   if (calm.matches) {
@@ -146,6 +146,49 @@
     document.addEventListener('visibilitychange', () => document.hidden ? stop() : play());
 
     paint();
+  });
+
+  /* ── Plan drawing: key and marker drive one photograph ────────────── */
+  document.querySelectorAll('[data-plan]').forEach(plan => {
+    const keys  = [...plan.querySelectorAll('[data-key]')];
+    const marks = [...plan.querySelectorAll('g[data-k]')];
+    const view  = plan.querySelector('[data-view]');
+    const cap   = plan.querySelector('[data-viewcap]');
+    if (!keys.length || !view) return;
+
+    const select = (k) => {
+      keys.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.key === k)));
+      marks.forEach(g => g.classList.toggle('on', g.dataset.k === k));
+      const b = keys.find(x => x.dataset.key === k);
+      if (!b) return;
+      view.src = `assets/img/${b.dataset.ph}.jpg`;
+      view.alt = b.dataset.cap;
+      cap.textContent = b.dataset.cap;
+    };
+
+    keys.forEach(b => {
+      b.addEventListener('click', () => select(b.dataset.key));
+      b.addEventListener('mouseenter', () => select(b.dataset.key));
+      b.addEventListener('focus', () => select(b.dataset.key));
+    });
+
+    // the markers on the drawing are the same control, reachable by keyboard
+    marks.forEach(g => {
+      const k = g.dataset.k;
+      const label = keys.find(x => x.dataset.key === k);
+      g.setAttribute('tabindex', '0');
+      g.setAttribute('role', 'button');
+      g.setAttribute('aria-label', label ? label.textContent.replace(/^\s*\d+\s*/, '') : `Detail ${k}`);
+      g.style.cursor = 'pointer';
+      g.addEventListener('click', () => select(k));
+      g.addEventListener('mouseenter', () => select(k));
+      g.addEventListener('focus', () => select(k));
+      g.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); select(k); }
+      });
+    });
+
+    select('1');
   });
 
   /* ── Lightbox for carousel photographs ────────────────────────────── */

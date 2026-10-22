@@ -165,14 +165,46 @@ section { padding: clamp(3.5rem, 9vw, 6.5rem) 0; }
 .eras time { font-family: "Fraunces", Georgia, serif; font-weight: 700; font-size: 1.04rem; color: var(--ink); font-variant-numeric: tabular-nums; }
 .eras p { margin: 0; font-size: .95rem; color: var(--ink-2); }
 
-.works { list-style: none; margin: 0; padding: 0; border-top: var(--rule); }
-.works li { padding: 1.05rem .2rem; border-bottom: var(--rule); transition: background .22s var(--ease); }
-.works li:hover { background: var(--paper-2); }
-.works p { margin: 0; }
-@media (min-width: 760px) {
-  .works { display: grid; grid-template-columns: 1fr 1fr; column-gap: clamp(2rem, 5vw, 4rem); }
-  .works li:nth-last-child(-n+2) { border-bottom: 0; }
+/* ── Layout drawing: the works list as a plan, with the photographs ──── */
+.plan { display: grid; gap: clamp(1.4rem, 3vw, 2.25rem); }
+@media (min-width: 960px) { .plan { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); align-items: start; } }
+
+.plan__sheet { background: var(--sheet); border: var(--rule); border-radius: 6px; padding: clamp(.9rem, 2vw, 1.5rem); }
+.plan__sheet svg { width: 100%; height: auto; display: block; }
+
+.road  { fill: #d9ded8; }
+.plot  { fill: none; stroke: var(--line); stroke-width: 1; }
+.green { fill: #dde7dc; }
+.edge  { fill: none; stroke: var(--ink-3); stroke-width: 1; }
+.dim   { stroke: var(--ink-3); stroke-width: 1; }
+.dimt  { fill: var(--ink-2); font: 500 11px "Public Sans", sans-serif; font-variant-numeric: tabular-nums; }
+.mark  { fill: var(--sheet); stroke: var(--ink-3); stroke-width: 1.2; }
+.markn { fill: var(--ink-2); font: 600 10px "Public Sans", sans-serif; text-anchor: middle; }
+.lbl   { fill: var(--ink-3); font: 400 10.5px "Public Sans", sans-serif; }
+
+/* the live one */
+.plan__sheet g[data-k].on .mark  { fill: var(--stamp); stroke: var(--stamp); }
+.plan__sheet g[data-k].on .markn { fill: var(--sheet); }
+.plan__sheet g[data-k] .halo { fill: none; stroke: var(--stamp); stroke-width: 0; opacity: 0; transition: stroke-width .3s var(--ease), opacity .3s var(--ease); }
+.plan__sheet g[data-k].on .halo { stroke-width: 10; opacity: .18; }
+
+.plan__view { position: relative; border: var(--rule); border-radius: 6px; overflow: hidden; background: var(--line); }
+.plan__view img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+.plan__cap { position: absolute; inset: auto 0 0 0; padding: 2rem .95rem .85rem; background: linear-gradient(to top, rgba(8,20,13,.9), rgba(8,20,13,0)); color: var(--sheet); font-size: .92rem; }
+
+.keys { list-style: none; margin: 1.1rem 0 0; padding: 0; display: grid; gap: .3rem; }
+.keys button {
+  width: 100%; text-align: left; cursor: pointer;
+  display: grid; grid-template-columns: 1.6rem 1fr; gap: .7rem; align-items: baseline;
+  background: transparent; border: 0; border-top: var(--rule);
+  padding: .72rem .35rem; font: 400 .95rem/1.45 "Public Sans", sans-serif; color: var(--ink-2);
+  transition: background .2s var(--ease), color .2s var(--ease);
 }
+.keys li:last-child button { border-bottom: var(--rule); }
+.keys button:hover { background: var(--paper-2); color: var(--ink); }
+.keys button[aria-pressed="true"] { background: var(--stamp-bg); color: var(--ink); }
+.keys .k { font-weight: 600; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.keys button[aria-pressed="true"] .k { color: var(--stamp); }
 
 .plates { position: relative; }
 .plates__frame { border: var(--rule); border-radius: 6px; background: var(--sheet); padding: clamp(.6rem, 1.6vw, 1rem); }

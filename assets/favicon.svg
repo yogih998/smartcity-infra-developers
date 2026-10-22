@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="12" fill="#10301f"/>
+  <!-- a plot block split by two roads: the mark of a layout -->
+  <g fill="none" stroke="#f7f9f6" stroke-width="5" stroke-linecap="square">
+    <path d="M32 10 V54"/>
+    <path d="M10 32 H54"/>
+  </g>
+  <g fill="#f7f9f6" opacity=".55">
+    <rect x="13" y="13" width="12" height="12" rx="1.5"/>
+    <rect x="39" y="13" width="12" height="12" rx="1.5"/>
+    <rect x="13" y="39" width="12" height="12" rx="1.5"/>
+    <rect x="39" y="39" width="12" height="12" rx="1.5"/>
+  </g>
+</svg>
