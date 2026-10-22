@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles.css?v=1792641859">
 </head>
 <body>
 
@@ -203,15 +203,28 @@
         <h2>The site, as photographed</h2>
         <p>Entrance arch, internal roads, plantation and plotted land across the Maheshwaram layouts.</p>
       </div>
-      <ul class="gallery" style="list-style:none;margin:0;padding:0">
-        <li><a href="assets/img/scid-1.jpg"><img src="assets/img/scid-1.jpg" alt="Entrance and internal road at the Maheshwaram layout" loading="lazy" width="1100" height="690"></a></li>
-        <li><a href="assets/img/scid-2.jpg"><img src="assets/img/scid-2.jpg" alt="Plotted land with avenue plantation" loading="lazy" width="800" height="600"></a></li>
-        <li><a href="assets/img/scid-5.jpg"><img src="assets/img/scid-5.jpg" alt="Overhead water tank serving the layout" loading="lazy" width="1100" height="730"></a></li>
-        <li><a href="assets/img/scid-7.jpg"><img src="assets/img/scid-7.jpg" alt="Kerbed road running between plotted land" loading="lazy" width="1100" height="730"></a></li>
-        <li><a href="assets/img/scid-11.jpg"><img src="assets/img/scid-11.jpg" alt="Electricity poles and laid road at Lake View" loading="lazy" width="1100" height="730"></a></li>
-        <li><a href="assets/img/scid-12.jpg"><img src="assets/img/scid-12.jpg" alt="Plotted land with drainage chambers in place" loading="lazy" width="1100" height="730"></a></li>
-        <li><a href="assets/img/scid-10.jpg"><img src="assets/img/scid-10.jpg" alt="Completed apartment block" loading="lazy" width="1100" height="730"></a></li>
-      </ul>
+      <div class="carousel r" data-carousel data-interval="5000" aria-roledescription="carousel" aria-label="Site photographs">
+        <div class="carousel__track" data-track tabindex="0" aria-live="polite">
+          <figure class="carousel__slide" data-slide><img src="assets/img/scid-1.jpg" alt="Finished BT road with kerbing and young avenue plantation" width="1100" height="730"><figcaption class="carousel__cap">BT road with kerbing, avenue plantation either side</figcaption></figure>
+          <figure class="carousel__slide" data-slide><img src="assets/img/scid-2.jpg" alt="Gated entrance and compound wall at the layout" loading="lazy" width="1100" height="730"><figcaption class="carousel__cap">Gated entrance and compound wall</figcaption></figure>
+          <figure class="carousel__slide" data-slide><img src="assets/img/scid-5.jpg" alt="Overhead water tank beside the layout road" loading="lazy" width="1100" height="730"><figcaption class="carousel__cap">Overhead water tank serving the layout</figcaption></figure>
+          <figure class="carousel__slide" data-slide><img src="assets/img/scid-7.jpg" alt="Kerbed road running between plotted land" loading="lazy" width="1100" height="730"><figcaption class="carousel__cap">Drainage chambers set before the road was laid</figcaption></figure>
+          <figure class="carousel__slide" data-slide><img src="assets/img/scid-11.jpg" alt="Electricity poles and laid road at Lake View" loading="lazy" width="1100" height="730"><figcaption class="carousel__cap">Electricity drawn through to the plots at Lake View</figcaption></figure>
+          <figure class="carousel__slide" data-slide><img src="assets/img/scid-12.jpg" alt="Plotted land with boundary stones and drainage in place" loading="lazy" width="1100" height="730"><figcaption class="carousel__cap">Plotted land, boundaries marked</figcaption></figure>
+          <figure class="carousel__slide" data-slide><img src="assets/img/scid-10.jpg" alt="Completed apartment block" loading="lazy" width="1100" height="730"><figcaption class="carousel__cap">Apartment block completed by the group</figcaption></figure>
+        </div>
+        <div class="carousel__bar">
+          <div class="carousel__dots" data-dots role="tablist" aria-label="Choose a photograph"></div>
+          <div class="carousel__nav">
+            <button type="button" data-prev aria-label="Previous photograph">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+            </button>
+            <button type="button" data-next aria-label="Next photograph">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -275,5 +288,6 @@
   </a>
 </nav>
 
+<script src="app.js?v=1792641859" defer></script>
 </body>
 </html>
