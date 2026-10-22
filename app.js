@@ -28,7 +28,7 @@
   onScroll();
 
   /* ── Scroll reveal ────────────────────────────────────────────────── */
-  const reveal = document.querySelectorAll('.sec-head, .project, .spec li, .carousel, .proof div, .contact__grid > *');
+  const reveal = document.querySelectorAll('.sec-head, .project, .more, .works li, .plates, .band div, .track li, .contact__grid > *');
   reveal.forEach(el => el.classList.add('r'));
 
   if (calm.matches) {
@@ -71,8 +71,13 @@
 
     let at = 0, timer = null;
 
+    const at_out = root.querySelector('[data-at]');
+    const of_out = root.querySelector('[data-of]');
+    if (of_out) of_out.textContent = String(slides.length);
+
     const paint = () => {
       slides.forEach((s, i) => s.classList.toggle('is-active', i === at));
+      if (at_out) at_out.textContent = String(at + 1);
       buttons.forEach((b, i) => {
         const on = i === at;
         b.setAttribute('aria-current', String(on));
@@ -177,17 +182,4 @@
   lb.addEventListener('click', () => closeLb());
   addEventListener('keydown', e => { if (e.key === 'Escape' && lb.classList.contains('is-open')) closeLb(); });
 
-  /* ── One cue on the primary action, once the hero is behind you ───── */
-  const cue = document.querySelector('.site-head .btn--wa');
-  if (cue && !calm.matches) {
-    const once = new IntersectionObserver(entries => {
-      if (!entries[0].isIntersecting) {
-        cue.classList.add('is-cued');
-        setTimeout(() => cue.classList.remove('is-cued'), 3400);
-        once.disconnect();
-      }
-    }, { threshold: 0 });
-    const hero = document.querySelector('.hero');
-    if (hero) once.observe(hero);
-  }
 })();
