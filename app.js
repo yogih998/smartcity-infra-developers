@@ -189,6 +189,25 @@
     });
 
     select('1');
+
+    // Plan or List: two readings of the same eight works
+    const panes = [...plan.querySelectorAll('[data-pane]')];
+    const tabs  = [...plan.querySelectorAll('[data-pane-btn]')];
+    const hint  = plan.querySelector('[data-hint]');
+    const HINTS = {
+      plan: 'Tap any number on the plan to see that work on site',
+      list: 'Tap any line to see that work on site'
+    };
+    const showPane = (name) => {
+      panes.forEach(p => { p.hidden = p.dataset.pane !== name; });
+      tabs.forEach(t => t.setAttribute('aria-selected', String(t.dataset.paneBtn === name)));
+      if (hint) hint.textContent = HINTS[name] || '';
+      try { localStorage.setItem('scid-pane', name); } catch (e) {}
+    };
+    tabs.forEach(t => t.addEventListener('click', () => showPane(t.dataset.paneBtn)));
+    let start = 'plan';
+    try { start = localStorage.getItem('scid-pane') || 'plan'; } catch (e) {}
+    showPane(start);
   });
 
   /* ── Lightbox for carousel photographs ────────────────────────────── */
