@@ -28,7 +28,7 @@
   onScroll();
 
   /* ── Scroll reveal ────────────────────────────────────────────────── */
-  const reveal = document.querySelectorAll('.sec-head, .project, .more, .works li, .plates, .band div, .track li, .contact__grid > *');
+  const reveal = document.querySelectorAll('.sec-head, .project, .more, .works li, .plates, .band div, .arc > *, .contact__grid > *');
   reveal.forEach(el => el.classList.add('r'));
 
   if (calm.matches) {

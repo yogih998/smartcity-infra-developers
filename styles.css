@@ -142,22 +142,24 @@ section { padding: clamp(3.5rem, 9vw, 6.5rem) 0; }
 .more p { margin: 0; color: var(--ink-2); max-width: var(--measure); }
 .more__act { margin-top: .4rem; }
 
-.story { background: var(--field); color: var(--sheet); }
-.story h2 { color: var(--sheet); }
-.story .lede { color: #b9c7bf; }
-.track { margin: 0; padding: 0; list-style: none; display: grid; }
-@media (min-width: 880px) { .track { grid-template-columns: repeat(3, 1fr); } }
-.track li { position: relative; padding: 2.2rem 0 0; border-top: 1px solid rgba(247,249,246,.3); }
-@media (min-width: 880px) {
-  .track li { padding: 2.2rem clamp(1.2rem, 2.5vw, 2rem) 0 0; }
-  .track li + li { padding-left: clamp(1.2rem, 2.5vw, 2rem); }
-  .track li + li::before { left: clamp(1.2rem, 2.5vw, 2rem); }
-}
-@media (max-width: 879px) { .track li + li { margin-top: 2rem; } }
-.track li::before { content: ""; position: absolute; top: -5px; left: 0; width: 9px; height: 9px; background: var(--sheet); border-radius: 50%; }
-.track time { display: block; font-family: "Libre Franklin", sans-serif; font-weight: 700; font-size: clamp(1.6rem, 1.3rem + 1.1vw, 2.1rem); letter-spacing: -.02em; line-height: 1; }
-.track h3 { margin: .7rem 0 .4rem; font-size: 1.06rem; font-weight: 600; color: #e4ece7; }
-.track p { margin: 0; color: #b9c7bf; font-size: .97rem; }
+/* ── The turn: setup quiet, the 2015 insight dominant ────────────────── */
+.arc { display: grid; gap: clamp(2rem, 5vw, 3.5rem); align-items: start; }
+@media (min-width: 900px) { .arc { grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); } }
+
+.arc__now { position: relative; }
+.arc__since { display: block; font-family: "Libre Franklin", sans-serif; font-weight: 800; font-size: clamp(2.6rem, 1.6rem + 4.4vw, 5rem); line-height: .92; letter-spacing: -.035em; color: var(--stamp); }
+.arc__claim { font-family: "Libre Franklin", sans-serif; font-weight: 700; font-size: clamp(1.35rem, 1.05rem + 1.5vw, 2.2rem); line-height: 1.17; letter-spacing: -.022em; margin: .85rem 0 0; max-width: 20ch; }
+.arc__now p { margin: 1rem 0 0; color: var(--ink-2); max-width: 46ch; }
+
+.layouts { display: flex; flex-wrap: wrap; gap: .45rem; margin: 1.4rem 0 0; padding: 0; list-style: none; }
+.layouts li { background: var(--sheet); border: var(--rule); border-radius: 3px; padding: .45rem .7rem; font-size: .92rem; font-weight: 600; }
+
+.arc__before { background: var(--paper-2); border-radius: 6px; padding: clamp(1.3rem, 3vw, 1.9rem); }
+.arc__before h3 { font-size: 1.02rem; font-weight: 600; color: var(--ink-3); margin-bottom: 1.1rem; }
+.eras { margin: 0; padding: 0; list-style: none; display: grid; gap: 1.1rem; }
+.eras li { display: grid; grid-template-columns: 4.6rem 1fr; gap: .9rem; align-items: baseline; }
+.eras time { font-family: "Libre Franklin", sans-serif; font-weight: 700; font-size: 1.04rem; color: var(--ink); font-variant-numeric: tabular-nums; }
+.eras p { margin: 0; font-size: .95rem; color: var(--ink-2); }
 
 .works { list-style: none; margin: 0; padding: 0; border-top: var(--rule); }
 .works li { padding: 1.05rem .2rem; border-bottom: var(--rule); transition: background .22s var(--ease); }
